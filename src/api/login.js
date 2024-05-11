@@ -10,9 +10,4 @@ const post = function (url) {
     return await resp.json()
   }
 }
-const getAccessToken = post('http://127.0.0.1:8787/auth');
-
-
-export {
-  getAccessToken
-}
+export const getAccessToken = post('https://bgm-auth.dovahkiin.top/auth');
