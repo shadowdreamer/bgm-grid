@@ -15,7 +15,7 @@ function login () {
   window.location.href = `https://bgm.tv/oauth/authorize?${qs.stringify({
     client_id: 'bgm1345aaf31ef839bc',
     response_type: 'code',
-    redirect_uri: encodeURI('https://dovahkiin.top')
+    redirect_uri: encodeURI('https://bgm.dovahkiin.top')
   })}`
 }
 onMounted(() => {
