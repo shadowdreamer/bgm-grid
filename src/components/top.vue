@@ -12,7 +12,7 @@ const { userInfo } = storeToRefs(useBaseStore())
 const { toAuthPage } = useBaseStore()
 
 </script>
-<style scoped lang="scss">
+<style scoped lang="postcss">
 .top-bar {
   @apply flex py-2;
 
