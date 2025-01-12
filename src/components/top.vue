@@ -1,18 +1,22 @@
 <template lang="pug">
-.flex.top-bar(v-if="baseStore.userInfo")
+.flex.top-bar(v-if="userInfo")
   .flex-1
-  img.avatar.mr-2(:src="baseStore.userInfo.avatar.medium")
-  div {{ baseStore.userInfo.nickname }}
+  img.avatar.mr-2(:src="userInfo.avatar.medium")
+  div {{ userInfo.nickname }}
+button(v-else @click="toAuthPage()") login
 </template>
-<script setup>
+<script setup lang="ts">
 import { useBaseStore } from "@/store"
-const baseStore = useBaseStore();
+import { storeToRefs } from "pinia";
+const { userInfo } = storeToRefs(useBaseStore())
+const { toAuthPage } = useBaseStore()
 
 </script>
 <style scoped lang="scss">
-.top-bar{
+.top-bar {
   @apply flex py-2;
-  .avatar{
+
+  .avatar {
     @apply object-contain w-6 h-6;
   }
 }
