@@ -25,7 +25,7 @@ export const useBaseStore = defineStore("user",()=>{
     window.location.href = `https://bgm.tv/oauth/authorize?${qs.stringify({
       client_id: 'bgm1345aaf31ef839bc',
       response_type: 'code',
-      redirect_uri: encodeURI('https://dev.bgm.tv')
+      redirect_uri: encodeURI('https://bgm.dovahkiin.top')
     })}`
   }
     
