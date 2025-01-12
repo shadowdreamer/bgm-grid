@@ -6,7 +6,7 @@ import qs from "qs";
 
 export const useBaseStore = defineStore("user",()=>{
   const authInfo = ref();
-  const { data: userInfo } = getMe();
+  const { data: userInfo,execute } = getMe();
   async function getAuth (code:string) {
     try {
       const res = await getAccessToken({ code });
@@ -16,7 +16,7 @@ export const useBaseStore = defineStore("user",()=>{
       const url = new URL(window.location.href);
       url.searchParams.delete('code');
       window.history.replaceState({}, document.title, url.toString());
-
+      execute();
     } catch (err) {
       console.log(err);
     }
