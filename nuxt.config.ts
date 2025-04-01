@@ -63,5 +63,8 @@ export default defineNuxtConfig({
   svgo: {
     defaultImport:"component"
   },
-  runtimeConfig:{ },
+  runtimeConfig:{ 
+    CLIENT_ID: import.meta.env.BGM_App_ID,
+    CLIENT_SECRET: import.meta.env.BGM_App_Secret,
+  }
 })

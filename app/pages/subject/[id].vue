@@ -10,6 +10,7 @@ const { data,status } = useAsyncData("getSubject"+route.params.id, () => getSubj
 useSeoMeta({
   title: () =>  `${data.value?.name}| ${AppName}`,
   description:()=> data.value?.name_cn,
+  ogTitle: () =>  `${data.value?.name}| ${AppName}`,
   ogDescription:()=> data.value?.name_cn,
   ogImage:()=>data.value?.images?.common
 });
