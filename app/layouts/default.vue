@@ -1,4 +1,6 @@
 <template lang="pug">
-NuxtPage
+Top
+main
+  NuxtPage
 </template>
  

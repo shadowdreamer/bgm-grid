@@ -1,3 +1,4 @@
+import {AppDesc, AppName} from './app/utils/config'
 export default defineNuxtConfig({
   
   modules: [
@@ -24,9 +25,9 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'zh-CN',
       },
-      title:'hello bangumi',
+      title:AppName,
       meta: [
-        { name: 'description', content: '' },
+        { name: 'description', content: AppDesc },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
         { name: 'robots', content: 'index, follow' },
         { name: 'build-date', content: new Date().toISOString() }

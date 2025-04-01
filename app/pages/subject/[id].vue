@@ -8,7 +8,10 @@ div(v-if="data")
 const route = useRoute();
 const { data,status } = useAsyncData("getSubject"+route.params.id, () => getSubject(route.params.id));
 useSeoMeta({
-  title: () =>  data.value?.name,
+  title: () =>  `${data.value?.name}| ${AppName}`,
+  description:()=> data.value?.name_cn,
+  ogDescription:()=> data.value?.name_cn,
+  ogImage:()=>data.value?.images?.common
 });
 onMounted(()=>{
   if(import.meta.dev){
