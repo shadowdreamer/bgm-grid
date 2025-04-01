@@ -1,25 +1,23 @@
 <template lang="pug">
 .grid-warp.relative(ref="warpRef")
-  collcCard(v-for="(item,i) in collcData?.data" :key="item.subject_id" :data="item" :tabindex="i" 
+  CollcCard(v-for="(item,i) in collcData" :key="item.subject_id" :data="item" :tabindex="i" 
     @click="toSubject(item.subject,i)" ref="cardsRef")
 </template>
 <script setup lang="ts">
 import { onActivated, ref, useTemplateRef, watch } from 'vue';
-import { getCollections } from '@/api/common';
-import collcCard from './collcCard.vue'
+ 
 import gsap,{Linear} from "gsap";
 
-import { useBaseStore } from "@/store"
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 const warpRef = useTemplateRef("warpRef")
 const cardsRef = useTemplateRef("cardsRef")
 const router = useRouter();
-const { userInfo } = storeToRefs(useBaseStore());
-const { data:collcData,execute:refresh } = getCollections(
-  userInfo,
-  ref({type:3,subject_type:2})
-)
+const collcData = [];
+// const { data:collcData,execute:refresh } = getCollections(
+//   userInfo,
+//   ref({type:3,subject_type:2})
+// )
 const viewingCard = ref(null)
 function toSubject(data,i){
   const rect = cardsRef.value[i].$el.getBoundingClientRect();
@@ -47,24 +45,24 @@ function toSubject(data,i){
     query:{subject_id:data.id}
   })
 }
-onActivated(()=>{
-  if(viewingCard.value){
-    gsap.fromTo(cardsRef.value[viewingCard.value ].$el,{
-      rotate:30
-    },{
-      rotate:0,
-      x:0,
-      y:0,
-      duration:0.1,
-      ease:Linear.easeIn,
-      onComplete:()=>{
-        refresh()
-      }
-    })
-  }else{
-    refresh()
-  }
-})
+// onActivated(()=>{
+//   if(viewingCard.value){
+//     gsap.fromTo(cardsRef.value[viewingCard.value ].$el,{
+//       rotate:30
+//     },{
+//       rotate:0,
+//       x:0,
+//       y:0,
+//       duration:0.1,
+//       ease:Linear.easeIn,
+//       onComplete:()=>{
+//         refresh()
+//       }
+//     })
+//   }else{
+//     refresh()
+//   }
+// })
 </script>
 <style scoped lang="postcss">
 .grid-warp{

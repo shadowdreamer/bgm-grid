@@ -20,7 +20,6 @@
 </template>
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue';
-import { byteLenth } from '@/utils/tools'
 import { useRouter } from "vue-router";
 
 const router = useRouter()
@@ -59,7 +58,6 @@ const cuttedTags = computed(()=>{
     .score{
       @apply absolute w-12 h-14 bottom-1 right-2 bg-cover bg-center text-white flex  justify-center items-baseline whitespace-nowrap
         pt-5 select-none;
-      background-image: url("@/assets/bgm-tv.svg");
     
 
     }
