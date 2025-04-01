@@ -3,6 +3,13 @@ import qs from 'qs';
 
 export const useAppData = defineStore('app', () => {
   const token = ref("");
+  const {data:userData, execute,refresh} = useAsyncData('userInfo',()=>getMe(),{server:false,immediate:false})
+  watch(token,(val)=>{
+    if(val){
+      execute()
+    }
+  },{immediate:true})
+
   function toAuthPage () {
     window.location.href = `https://bgm.tv/oauth/authorize?${qs.stringify({
       client_id: 'bgm1345aaf31ef839bc',
@@ -17,12 +24,15 @@ export const useAppData = defineStore('app', () => {
     });
     if(res.access_token){
       token.value = res.access_token;
-      navigateTo('/')
+      // navigateTo('/')
     }
   }
+
+ 
+
   return {
     toAuthPage,getToken,
-    token
+    token,userData
    }
 },{
   persist: {

@@ -17,16 +17,10 @@ declare module '#app' {
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const runtimeConfig = useRuntimeConfig();
   const apiClient = $fetch.create({
     baseURL: baseUrl,
     retry: 0,
     async onRequest({ request, options }) {
-      const __api = request.toString();      
-      const { token } = storeToRefs(useAppData());
-      if (token.value) {
-        options.headers.append('Authorization',`Bearer ${token.value}`)
-      }
 
     },
 
