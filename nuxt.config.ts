@@ -53,7 +53,10 @@ export default defineNuxtConfig({
       },
     },
     routeRules:{
-      '/subject/**':{isr:1200}
+      '/':{prerender:true},
+      '/subject/**':{isr:{
+        expiration:600,
+      }}
     }
   },
   svgo: {

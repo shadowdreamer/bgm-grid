@@ -3,15 +3,12 @@ export const getMe = () => {
   return $http.get<any>(`/v0/me`, {});
 }
 export const getCalendar = ( ) => { 
-  const { $http } = useNuxtApp();
-  let res =  $http.get(`/calendar`,{});
-  console.log(res);
-  return res
-  
+  const { $ssr } = useNuxtApp();
+  return  $ssr.get(`/calendar`,{});  
 }
 export const getSubject = (subjectId: string) => {
-  const { $http } = useNuxtApp();
-  return $http.get<any>(`/v0/subjects/${subjectId}`, {});
+  const { $ssr } = useNuxtApp();  
+  return $ssr.get<any>(`/v0/subjects/${subjectId}`, {});
 }
 export const getCollections = ( query:CollectionQuery) => { 
   const { $http } = useNuxtApp();

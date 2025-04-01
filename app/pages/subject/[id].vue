@@ -1,17 +1,21 @@
 <template lang="pug">
 div(v-if="data")
+  img.w-48(:src="data.images.large")
   div {{data.name}}
-  div {{data.summary}}
+  div.whitespace-pre-line(v-html="data.summary")
 </template>
 <script setup lang="ts">
 const route = useRoute();
-const { data,refresh } = useAsyncData("getCalendar", () => getSubject(route.params.id));
- 
+const { data,status } = useAsyncData("getSubject"+route.params.id, () => getSubject(route.params.id));
 useSeoMeta({
   title: () =>  data.value?.name,
 });
 onMounted(()=>{
-  !data.value && refresh();
+  if(import.meta.dev){
+    console.log(data.value);
+    
+  }
 })
+
 </script>
 <style></style>
