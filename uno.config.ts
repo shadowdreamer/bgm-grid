@@ -19,6 +19,13 @@ export default defineConfig({
     extractorPug(),
   ],
   theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px', 
+      '2xl': '1920px',
+    },
     fontSize: {
       base: 'clamp(14px, 4.266, 16px)', // 适配 375px 屏幕
       'px15':'15px',
@@ -26,13 +33,7 @@ export default defineConfig({
     },
     colors: {
       primary:"#26B1BC",
-      'primary-100':"#E9F7F8",
-      gray999:'#999999',
-      gray666:'#666666',
-      gray333:'#333333',
-      graybg:'#EFF1F1',
-      sub:"#FF8000",
-      'sub-100':'#FFF2E5',
+      
       // ...whiteA,
       // ...blackA,
     }, 

@@ -1,10 +1,10 @@
 <template lang="pug">
-.flex.gap-3.flex-wrap(v-if="Array.isArray(data)")
-  div(v-for="item in data")
-    .text-xl {{item.weekday?.cn}}
-    div.py-1(v-for="subject in item.items")
-      NuxtLink( :to="`/subject/${subject.id}`") {{subject.name_cn ||subject.name }}
+.flex.gap-3.flex-wrap(v-if="data")
+  div(v-for="day in Object.keys(data)")
+    .text-xl {{day}}
+    div.py-1(v-for="data in data[day]")
+      NuxtLink( :to="`/subject/${data.subject.id}`") {{data.subject.nameCN ||data.subject.name }}
 </template>
 <script setup lang="ts">
-const { data,refresh } = useAsyncData('getCalendar',()=>getCalendar());
+const { data,refresh } = useAsyncData('getCalendarNext',()=>nextSsrApi.getCalendar());
 </script>

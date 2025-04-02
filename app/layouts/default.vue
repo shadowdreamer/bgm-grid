@@ -1,6 +1,6 @@
 <template lang="pug">
 Top
-main
+main.container.mx-auto
   NuxtPage
 </template>
  

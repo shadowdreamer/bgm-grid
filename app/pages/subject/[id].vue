@@ -6,12 +6,12 @@ div(v-if="data")
 </template>
 <script setup lang="ts">
 const route = useRoute();
-const { data,status } = useAsyncData("getSubject"+route.params.id, () => getSubject(route.params.id));
+const { data,status } = useAsyncData("getSubject"+route.params.id, () => nextSsrApi.getSubject(route.params.id));
 useSeoMeta({
   title: () =>  `${data.value?.name}| ${AppName}`,
   description:()=> data.value?.name_cn,
   ogTitle: () =>  `${data.value?.name}| ${AppName}`,
-  ogDescription:()=> data.value?.name_cn,
+  ogDescription:()=> data.value?.info,
   ogImage:()=>data.value?.images?.common
 });
 onMounted(()=>{

@@ -24,7 +24,7 @@ export const useAppData = defineStore('app', () => {
     });
     if(res.access_token){
       token.value = res.access_token;
-      // navigateTo('/')
+      navigateTo('/')
     }
   }
 
