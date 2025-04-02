@@ -1,7 +1,7 @@
 import { defineConfig, presetAttributify, presetWind3 } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 import extractorPug from '@unocss/extractor-pug'
-// const { blackA,whiteA } = require('@radix-ui/colors')
+import { blackA, whiteA } from '@radix-ui/colors'
 
 export default defineConfig({
   presets: [
@@ -26,16 +26,10 @@ export default defineConfig({
       xl: '1280px', 
       '2xl': '1920px',
     },
-    fontSize: {
-      base: 'clamp(14px, 4.266, 16px)', // 适配 375px 屏幕
-      'px15':'15px',
-      'px13':'13px'
-    },
     colors: {
-      primary:"#26B1BC",
-      
-      // ...whiteA,
-      // ...blackA,
+      primary:"#F09199",
+      ...whiteA,
+      ...blackA,
     }, 
     keyframes: {
       overlayShow: {
