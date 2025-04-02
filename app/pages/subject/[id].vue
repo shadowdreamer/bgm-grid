@@ -1,12 +1,18 @@
 <template lang="pug">
-div(v-if="data")
+.py-2(v-if="data")
+  h1.text-2xl.font-bold {{ data.name }}
+  h2.text-base {{ data.nameCN }}
+.flex.gap-8(v-if="data")
   img.w-48(:src="data.images.large")
-  div {{data.name}}
-  div.whitespace-pre-line(v-html="data.summary")
+ 
+  div(class="w-[60%]")
+    
+    div.text-sm.leading-relaxed(v-html="data.summary")
 </template>
 <script setup lang="ts">
 const route = useRoute();
-const { data,status } = useAsyncData("getSubject"+route.params.id, () => nextSsrApi.getSubject(route.params.id));
+// @ts-ignore
+const { data,status } = useAsyncData("getSubject"+route.params?.id, () => getSubject(route.params?.id));
 useSeoMeta({
   title: () =>  `${data.value?.name}| ${AppName}`,
   description:()=> data.value?.name_cn,

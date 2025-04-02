@@ -1,5 +1,9 @@
 <template lang="pug">
-BarCalendar
+.flex.py-10.flex-wrap
+  .flex-1.min-w-96
+    ClientOnly
+      CollectionGrid
+  BarCalendar
 </template>
 <script setup lang="ts">
 useSeoMeta({

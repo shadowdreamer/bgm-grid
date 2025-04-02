@@ -1,7 +1,7 @@
 export default defineEventHandler(async (event) => {
   const url = getRequestURL(event);
   const newPath = url.pathname.replace('/api/next', ''); // 移除前缀
-  const targetUrl = `https://next.bgm.tv${newPath}`;
+  const targetUrl = `https://next.bgm.tv${newPath}${url.search}`;
   console.log(targetUrl);
   
   let body;

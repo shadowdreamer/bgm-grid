@@ -1,9 +1,8 @@
 
-export const getCalendar = ( ) => { 
-  const { $ssr } = useNuxtApp();
-  return  $ssr.get(`/calendar`,{});  
-}
-export const getSubject = (subjectId: string) => {
-  const { $ssr } = useNuxtApp();  
-  return $ssr.get<any>(`/v0/subjects/${subjectId}`, {});
+export const PublicApi = {
+  /**收藏条目*/ 
+  getSubject: (subjectId: string) => {
+    const { $ssr } = useNuxtApp();  
+    return $ssr.get<any>(`/v0/subjects/${subjectId}`, {});
+  }
 }

@@ -1,9 +1,12 @@
 <template lang="pug">
 NuxtLoadingIndicator
-NuxtLayout
+TooltipProvider
+  NuxtLayout
+    NuxtPage
 </template>
 <script setup lang="ts">
 import '@unocss/reset/tailwind.css'
+import { TooltipProvider } from "radix-vue";
 </script>
 <style>
 

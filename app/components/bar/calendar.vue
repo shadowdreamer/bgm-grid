@@ -10,7 +10,7 @@ TabsRoot.calender-tab( v-model="tabValue" v-if="data")
 </template>
 <script setup lang="ts">
 import { TabsContent, TabsIndicator, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
-const { data,refresh } = useAsyncData('getCalendarNext',()=>nextSsrApi.getCalendar());
+const { data,refresh } = useAsyncData('getCalendarNext',()=>getCalendar());
 const tabValue = ref(1)
  
 </script>

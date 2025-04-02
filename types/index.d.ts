@@ -6,7 +6,7 @@ interface CollectionQuery {
   `4`: 搁置
   `5`: 抛弃
   */
-  type: 1 | 2 | 3 | 4 | 5
+  type?: 1 | 2 | 3 | 4 | 5
   /**
   `1` 为 书籍
   `2` 为 动画
@@ -14,5 +14,5 @@ interface CollectionQuery {
   `4` 为 游戏
   `6` 为 三次元
   */
-  subject_type: 1 | 2 | 3 | 4 | 6
+  subjectType?: 1 | 2 | 3 | 4 | 6
 }
