@@ -1,14 +1,16 @@
 <template lang="pug">
-.grid.grid-cols-2(v-if="Array.isArray(data?.data)")
-  div(v-for="item in data.data")
-    NuxtLink(:to="`/subject/${item.id}`") {{item.name}}
+div {{ status }}
+.grid.grid-cols-2.gap-y-4.gap-x-8(class="max-md:grid-cols-1" v-if="Array.isArray(data?.data)")
+  CollectionSubjectDialog(v-for="item in data.data" :data="item")
+    CollectionSubjectCard(:data="item")
+.grid.grid-cols-2.gap-y-4.gap-x-8(v-if="status=='pending'")
 </template>
 <script setup lang="ts">
 const query:CollectionQuery = {
-  subjectType:2,
+  subject_type:2,
   type:3,
 }
-const { data,refresh } = useAsyncData('collction_subject', ()=>collectionSubjects(query));
+const { data,status } = useAsyncData('getUserCollections', ()=>PublicApi.getUserCollections(query));
 </script>
 <style>
 

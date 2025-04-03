@@ -1,5 +1,6 @@
 <template lang="pug">
-Top
+ClientOnly
+  Top
 main.container.mx-auto
   slot
 </template>

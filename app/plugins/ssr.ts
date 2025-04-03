@@ -21,7 +21,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     baseURL: baseUrl,
     retry: 0,
     async onRequest({ request, options }) {
-
+      const { token } = storeToRefs(useAppData());
+      if (token.value) {
+        options.headers.append('Authorization',`Bearer ${token.value}`)
+      }
     },
 
     async onResponseError({ request, response, options }) {

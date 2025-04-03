@@ -1,6 +1,6 @@
 <template lang="pug">
-.flex.py-10.flex-wrap
-  .flex-1.min-w-96
+.flex.py-10.flex-wrap.gap-8
+  .flex-1.min-w-96(v-if="userData")
     ClientOnly
       CollectionGrid
   BarCalendar
@@ -12,6 +12,9 @@ useSeoMeta({
   ogTitle: () =>  AppName,
   ogDescription:()=> AppDesc,
 });
+
+const {userData} = storeToRefs(useAppData())
+
 </script>
 <style>
 

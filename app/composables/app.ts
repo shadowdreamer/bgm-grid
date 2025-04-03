@@ -3,10 +3,10 @@ import qs from 'qs';
 
 export const useAppData = defineStore('app', () => {
   const token = ref("");
-  const {data:userData, execute,refresh} = useAsyncData('userInfo',()=>getMe(),{server:false,immediate:false})
+  const {data:userData, execute:getUserInfo} = useAsyncData('userInfo',()=>getMe(),{server:false,immediate:false})
   watch(token,(val)=>{
     if(val){
-      execute()
+      getUserInfo()
     }
   },{immediate:true})
 
@@ -31,12 +31,12 @@ export const useAppData = defineStore('app', () => {
  
 
   return {
-    toAuthPage,getToken,
+    toAuthPage,getToken,getUserInfo,
     token,userData
    }
 },{
   persist: {
     storage: piniaPluginPersistedstate.localStorage(),
-    pick: ['token']
+    pick: ['token','userData']
   },
 })
