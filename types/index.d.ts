@@ -14,5 +14,5 @@ interface CollectionQuery {
   `4` 为 游戏
   `6` 为 三次元
   */
-  subjectType?: 1 | 2 | 3 | 4 | 6
+  subject_type?: 1 | 2 | 3 | 4 | 6
 }
