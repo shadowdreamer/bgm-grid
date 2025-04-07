@@ -4,6 +4,7 @@ type get = <T>(url: string, options: { query?: Record<string, any>, headers? :He
 type post = <T>(url: string, options: { query?: Record<string, any>, data?: any,headers?:HeadersInit}) => Promise<T>
 type del = <T>(url: string, options: { query?: Record<string, any>, data?: any,headers?:HeadersInit}) => Promise<T>
 type put = <T>(url: string, options: { query?: Record<string, any>, data?: any,headers?:HeadersInit}) => Promise<T>
+type patch = <T>(url: string, options: { query?: Record<string, any>, data?: any,headers?:HeadersInit}) => Promise<T>
 
 declare module '#app' {
   interface NuxtApp {
@@ -12,6 +13,7 @@ declare module '#app' {
       post: post,
       del: del,
       put: put,
+      patch: patch,
     };
   }
 }
@@ -65,13 +67,22 @@ export default defineNuxtPlugin((nuxtApp) => {
       headers
     });
   }
+  const patch: post = async (url, { data, query,headers  } = {}) => {
+    return apiClient(url, {
+      method: 'PATCH',
+      query,
+      body: data,
+      headers
+    });
+  }
 
   nuxtApp.provide('http', {
     apiClient,
     post,
     get,
     del,
-    put
+    put,
+    patch
   });
 })
 

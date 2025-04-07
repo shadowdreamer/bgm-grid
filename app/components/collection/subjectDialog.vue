@@ -10,10 +10,15 @@ DialogRoot(v-model:open="open")
         div.w-144
           DialogTitle.text-xl.font-bold.mb-1 {{data.subject.name}}
           h2.text-base.text-gray-500.mb-2 {{data.subject.name_cn}}
-          CollectionEpisodeGrid(v-if="open" :id="props.data.subject.id")
+          .mb-4
+            CollectionEpisodeGrid(v-if="open" :id="props.data.subject.id")
 
-          template(v-if="info")
+          template(v-if="info && infoStatus=='success'")
             p.text-sm.whitespace-pre-wrap(v-html="info.summary")
+          div(v-if="infoStatus=='pending'" class="animate-pulse")
+            .bg-gray-300.h-4.w-72.rounded.mb-1
+            .bg-gray-300.h-4.w-32.rounded.mb-1
+            .bg-gray-300.h-4.w-18.rounded.mb-1
  
 </template>
 <script setup lang="ts">

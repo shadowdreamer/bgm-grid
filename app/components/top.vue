@@ -3,7 +3,7 @@
   NuxtLink(to="/") Home
   .flex-1 
   template(v-if="userData")
-    div {{ userData.nickname }}
+    UserDropdown
   button(v-else @click="toAuthPage()") login
 </template>
 <script setup lang="ts">

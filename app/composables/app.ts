@@ -3,7 +3,7 @@ import qs from 'qs';
 
 export const useAppData = defineStore('app', () => {
   const token = ref("");
-  const {data:userData, execute:getUserInfo} = useAsyncData('userInfo',()=>getMe(),{server:false,immediate:false})
+  const {data:userData, execute:getUserInfo,clear} = useAsyncData('userInfo',()=>getMe(),{server:false,immediate:false})
   watch(token,(val)=>{
     if(val){
       getUserInfo()
@@ -28,10 +28,13 @@ export const useAppData = defineStore('app', () => {
     }
   }
 
- 
+  function logout(){
+    token.value = "";
+    clear();
+  }
 
   return {
-    toAuthPage,getToken,getUserInfo,
+    toAuthPage,getToken,getUserInfo,logout,
     token,userData
    }
 },{

@@ -23,7 +23,9 @@ export default defineNuxtConfig({
         { rel: 'shortcut icon', href: '/favicon.ico', sizes: 'any' },
         { rel: 'apple-touch-icon', href: '/favicon.png' },
       ],
-      script:[],
+      script:[
+        {src:"https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback", defer:true}
+      ],
       htmlAttrs: {
         lang: 'zh-CN',
       },

@@ -44,9 +44,9 @@
   "iconify.inplace": true,
   "marscode.chatLanguage": "cn",
   "marscode.codeCompletionPro": {
-    "enableCodeCompletionPro": true
+    "enableCodeCompletionPro": false
   },
-  "marscode.enableInlineCommand": true,
+  "marscode.enableInlineCommand": false,
   "marscode.enableCodelens": {
     "enableInlineDocumentation": true,
     "enableInlineUnitTest": true,
