@@ -19,9 +19,7 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
       charset:'UTF-8',
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'shortcut icon', href: '/favicon.ico', sizes: 'any' },
-        { rel: 'apple-touch-icon', href: '/favicon.png' },
       ],
       script:[
         {src:"https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback", defer:true}
