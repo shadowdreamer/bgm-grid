@@ -31,6 +31,9 @@ export default defineConfig({
       ...whiteA,
       ...blackA,
     }, 
+    fontSize:{
+      'xxs':'10px'
+    },
     keyframes: {
       overlayShow: {
         from: { opacity: 0 },

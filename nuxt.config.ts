@@ -22,7 +22,6 @@ export default defineNuxtConfig({
         { rel: 'shortcut icon', href: '/favicon.ico', sizes: 'any' },
       ],
       script:[
-        {src:"https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback", defer:true}
       ],
       htmlAttrs: {
         lang: 'zh-CN',

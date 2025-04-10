@@ -8,3 +8,20 @@ export const byteLenth = function (str:string){
     }
   },0)
 }
+
+export const clamp = (value: number, min: number, max: number): number => {
+  return Math.min(Math.max(value, min), max);
+};
+
+export const stepNumber = (value: number,step:number): number => {
+  return (Math.round(value / step) * step *100 | 0) /100;
+};
+
+export const toggleItemInArray = <T>(array: T[], item: T): void => {
+  const index = array.indexOf(item);
+  if (index === -1) {
+    array.push(item);
+  } else {
+    array.splice(index, 1);
+  }
+};

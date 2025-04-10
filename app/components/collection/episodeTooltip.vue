@@ -1,6 +1,6 @@
 <template lang="pug">
 TooltipRoot(:delayDuration="20")
-  TooltipTrigger.ep-cell(:class="episodeStatusKeys[type]")
+  TooltipTrigger.ep-cell(:class="episodeStatus[type]")
     | {{String(ep.ep).padStart(2,'00')}}
   TooltipPortal
     TooltipContent(class="w-80 rounded-[4px] bg-white z-20001 shadow" align="start" side="bottom")
