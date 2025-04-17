@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LED Screen Effect with Three.js</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
+
+// 初始化场景
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// 创建LED材质
+const createLEDMaterial = (texture) => {
+  return new THREE.ShaderMaterial({
+    uniforms: {
+      uTexture: { value: texture },
+      uPixelSize: { value: 20 },
+      uGapSize: { value: 0.3 },
+      uBrightness: { value: 1.8 },
+      uTime: { value: 0 }
+    },
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform sampler2D uTexture;
+      uniform float uPixelSize;
+      uniform float uGapSize;
+      uniform float uBrightness;
+      uniform float uTime;
+      varying vec2 vUv;
+      
+      void main() {
+        vec2 grid = floor(vUv * uPixelSize) / uPixelSize;
+        vec2 center = grid + vec2(0.5 / uPixelSize);
+        float dist = distance(vUv, center) * uPixelSize;
+        
+        if (dist < (0.5 - uGapSize * 0.5)) {
+          // RGB分离效果
+          vec4 colorR = texture2D(uTexture, center + vec2(-0.003, 0.0));
+          vec4 colorG = texture2D(uTexture, center);
+          vec4 colorB = texture2D(uTexture, center + vec2(0.003, 0.0));
+          vec4 color = vec4(colorR.r, colorG.g, colorB.b, 1.0);
+          
+          // 亮度增强
+          color.rgb *= uBrightness;
+          
+          // 圆形渐变
+          float falloff = smoothstep(0.4, 0.5 - uGapSize * 0.5, dist);
+          color.rgb *= falloff;
+          
+          // 扫描线效果
+          float scanLine = mod(vUv.y * uPixelSize * 0.5 + uTime * 0.5, 1.0);
+          color.rgb *= 0.9 + 0.1 * scanLine;
+          
+          gl_FragColor = color;
+        } else {
+          gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+        }
+      }
+    `
+  });
+};
+
+// 加载纹理
+const textureLoader = new THREE.TextureLoader();
+textureLoader.load('./307237_5KNYE.jpg', (texture) => {
+  const aspect = texture.image.height / texture.image.width;
+  const geometry = new THREE.PlaneGeometry(4, 4 * aspect);
+  const material = createLEDMaterial(texture);
+  const mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
+  
+  // 动画循环
+  let time = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    time += 0.05;
+    material.uniforms.uTime.value = time;
+    renderer.render(scene, camera);
+  }
+  animate();
+});
+
+// 处理窗口大小变化
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+  </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <template lang="pug">
 ClientOnly
   Top
-main.container.mx-auto
+main.mx-auto
   slot
 </template>
  

@@ -22,6 +22,7 @@ export default defineNuxtConfig({
         { rel: 'shortcut icon', href: '/favicon.ico', sizes: 'any' },
       ],
       script:[
+        {src:'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js'}
       ],
       htmlAttrs: {
         lang: 'zh-CN',

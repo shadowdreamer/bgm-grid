@@ -14,6 +14,9 @@ module.exports = {
       fontSize: {
         base: 'clamp(14px, 4.266, 16px)', // 适配 375px 屏幕
       },
+      fontFamily:{
+        Oswald:["Oswald", 'sans-serif']
+      },
       colors: {
         gray333:"#333333",
         gray999:"#999999",

@@ -34,6 +34,9 @@ export default defineConfig({
     fontSize:{
       'xxs':'10px'
     },
+    fontFamily:{
+      Oswald:["Oswald", 'sans-serif']
+    },
     keyframes: {
       overlayShow: {
         from: { opacity: 0 },
